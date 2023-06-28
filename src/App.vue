@@ -1,7 +1,13 @@
 <script >
 import axios from 'axios';
+import ProjectCardComp from './components/ProjectCardComp.vue';
 
 export default{
+
+    components:{
+        ProjectCardComp
+    },
+
     data(){
         return{
             projects: [],
@@ -25,20 +31,9 @@ export default{
 <template>
  <h1>Projects</h1>
 
- <div class="container">
-    <div class="row">
-        <div class="col-lg-6" v-for="(elem, index) in projects" :key="index">
-            <div class="card">
-                <img class="card-img-top" :src="`${urlBase}/storage/${elem.img}`" alt="Title">
-                <div class="card-body">
-                    <h4 class="card-title">{{ elem.project_title }}</h4>
-                    <p class="card-text">{{ elem.description }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
- </div>
-
+    <main>
+        <ProjectCardComp/>
+    </main>
 </template>
 
 <style lang="scss">
