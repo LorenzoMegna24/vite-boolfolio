@@ -2,6 +2,7 @@
 
 export default{
     name: 'ProjectCardComp',
+    props: ['proj'],
     data(){
       return{
         
@@ -12,21 +13,15 @@ export default{
 </script>
 
 <template>
-
-<div class="container">
-    <div class="row">
-        <div class="col-lg-6" v-for="(elem, index) in projects" :key="index">
+        <div class="col-lg-6">
             <div class="card">
-                <img class="card-img-top" :src="`${urlBase}/storage/${elem.img}`" alt="Title">
+                <img class="card-img-top" :src="`${urlBase}/storage/${proj.img}`" alt="Title">
                 <div class="card-body">
-                    <h4 class="card-title">{{ elem.project_title }}</h4>
-                    <p class="card-text">{{ elem.description }}</p>
+                    <h4 class="card-title">{{ proj.project_title }}</h4>
+                    <p class="card-text">{{ proj.description }}</p>
                 </div>
             </div>
         </div>
-    </div>
- </div>
-
 
 </template>
 

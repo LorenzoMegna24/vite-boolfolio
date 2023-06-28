@@ -32,7 +32,11 @@ export default{
  <h1>Projects</h1>
 
     <main>
-        <ProjectCardComp/>
+        <div class="container">
+            <div class="row">
+                <ProjectCardComp v-for="(elem, index) in projects" :key="index" :proj="elem"/>
+            </div>
+        </div>
     </main>
 </template>
 
