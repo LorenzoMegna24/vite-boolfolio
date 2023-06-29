@@ -12,7 +12,7 @@ import { router } from '../router';
 
 <template>
     <div>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
               <div class="container">
                 <router-link class="navbar-brand" :to="{name: 'home'}">Boolfolio</router-link>
                 <button class="navbar-toggler d-lg-none" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavId" aria-controls="collapsibleNavId"
