@@ -3,7 +3,6 @@ import axios from 'axios';
 import ProjectCardComp from '../components/ProjectCardComp.vue';
 
 export default{
-
     components:{
         ProjectCardComp
     },
