@@ -12,7 +12,7 @@ const router = createRouter({
                 component: AppHome
             },
             {
-                path: '/blog',
+                path: '/project',
                 name: 'projects',
                 component: ProjectList
             },

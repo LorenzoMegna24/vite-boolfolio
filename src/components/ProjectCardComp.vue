@@ -15,7 +15,7 @@ export default{
 
 <template>
         <div class="col-lg-6">
-            <div class="card">
+            <div class="card mb-3">
                 <img class="card-img-top" :src="`${urlBase}/storage/${proj.img}`" alt="project">
                 <div class="card-body">
                     <h4 class="card-title">{{ proj.project_title }}</h4>

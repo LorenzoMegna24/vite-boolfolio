@@ -1,6 +1,6 @@
 <script >
 import axios from 'axios';
-import ProjectCardComp from './components/ProjectCardComp.vue';
+import ProjectCardComp from '../components/ProjectCardComp.vue';
 
 export default{
 
@@ -41,5 +41,4 @@ export default{
 </template>
 
 <style lang="scss">
-@use '../style/main.scss'
 </style>
