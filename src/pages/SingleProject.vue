@@ -18,26 +18,40 @@ export default{
     methods: {
         getSingleProj(){
             axios.get(`${this.urlBase}/api/projects/${this.$route.params.slug}`).then((response) => {
-                if (response.data.success) {
-                    this.project = response.data.project;
-                } else {
-                    // redirect alla pagina 404
-                    this.$router.push({ name: 'not-found' })
+                this.project = response.data.project;},
+                error=>{
+                    if (error.response.status === 404) {
+                        this.$router.push({ name: 'not-found' })
+                    }
                 }
-            });
-        }
+
+                // if (response.data.success) {
+                //     this.project = response.data.project;
+                // } else {
+                //     // redirect alla pagina 404
+                //     this.$router.push({ name: 'not-found' })
+                // }
+            );
+        },
         // getProjects(){
         //     axios.get(`${this.urlBase}/api/projects`).then(res=>{
         //         this.projects = res.data.projects
         //     })
         // }
+        goBack(){
+            // this.$router.back();
+            this.$router.go(-1)
+        }
     },
 }
 
 </script>
 
 <template>
-    <h1 class="text-center my-5">Single Project:  {{ project.project_title }}</h1>
+    <div class="mt-5 container">
+        <a class="btn btn-primary mt-5" href="" @click.prevent="goBack">Back</a>
+    </div>
+    <h1 class="text-center mb-5">Single Project:  {{ project.project_title }}</h1>
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
