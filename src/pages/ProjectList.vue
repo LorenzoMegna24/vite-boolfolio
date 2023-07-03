@@ -24,17 +24,15 @@ export default{
     methods: {
         getProjects(projectApiPage){
 
-            // const params = ''
+             const params = {
+                page: projectApiPage
+             }
 
-        //    if (this.selectedType !== 'all') {
-        //         params.type_id = this.selectedType
-        //    }
+           if (this.selectedType !== 'all') {
+                params.type_id = this.selectedType
+           }
 
-            axios.get(`${this.urlBase}/api/projects`,{
-                params: {
-                    page: projectApiPage
-                }
-            }).then(res=>{
+            axios.get(`${this.urlBase}/api/projects`, { params }).then(res=>{
                 this.projects = res.data.projects.data
                 this.currentPage = res.data.projects.current_page
                 this.lastPage = res.data.projects.last_page
