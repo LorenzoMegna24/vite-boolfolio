@@ -15,11 +15,20 @@ export default{
             selectedType: 'all',
             currentPage: 1,
             lastPage: null,
+            technologies: null,
+            selectedTechnology: [],
         }
     },
     mounted(){
         this.getProjects(1);
         this.getTypes();
+        this.getTechnologies();
+    },
+    watch: {
+        selectedTechnology:{
+            handler: 'getProjects',
+            deep: true,
+        }
     },
     methods: {
         getProjects(projectApiPage){
@@ -29,7 +38,11 @@ export default{
              }
 
            if (this.selectedType !== 'all') {
-                params.type_id = this.selectedType
+                params.type_id = this.selectedType;
+           }
+
+           if (this.selectedTechnology.length > 0) {
+                params.technologies_id = this.selectedTechnology.join(',');
            }
 
             axios.get(`${this.urlBase}/api/projects`, { params }).then(res=>{
@@ -42,6 +55,11 @@ export default{
             axios.get(`${this.urlBase}/api/types`).then(res =>{
                 this.types = res.data.types
             })
+        },
+        getTechnologies(){
+            axios.get(`${this.urlBase}/api/technologies`).then(res =>{
+                this.technologies = res.data.technologies
+            })
         }
     },
 }
@@ -52,6 +70,7 @@ export default{
  <h1>Projects</h1>
 
     <main>
+        <!-- selezione per tipo -->
         <div class="mb-3 container w-50">
             <label for="" class="form-label">Types filter</label>
 
@@ -60,6 +79,14 @@ export default{
                 <option :value="elem.id" v-for="(elem, index) in types" :key="index">{{ elem.name_type }}</option>
             </select>
         </div>
+        <!-- selezione per tecnologia -->
+        <div class="form-check">
+            <label class="form-check-label me-5" for="" v-for="(elem, index) in technologies" :key="index">
+              <input class="form-check-input" type="checkbox" :value="elem.id" v-model="selectedTechnology" id="">
+             {{ elem.name_technology }}
+            </label>
+        </div>
+
         <div class="container">
             <div class="row">
                 <ProjectCardComp v-for="(elem, index) in projects" :key="index" :proj="elem"/>
