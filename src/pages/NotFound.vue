@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1>ERROR 404</h1>
+        <h1 class="mt-5">ERROR 404</h1>
     </div>
 </template>
 
